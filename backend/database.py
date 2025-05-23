@@ -70,25 +70,29 @@ def init_db():
             for game in games_data:
                 try:
                     # Ensure all expected fields from schema are present or handled with defaults
+                    # Corrected INSERT statement to match schema.sql columns
                     cursor.execute(
-                        "INSERT INTO games (title, description, genre, release_date, image_url, game_url, developer, rating) "
+                        "INSERT INTO games (title, description, genre, release_date, thumbnail_url, game_url, developer, details_image_url) "
                         "VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
                         (
                             game.get("title", "N/A"), 
                             game.get("description", ""), 
                             game.get("genre", ""), 
                             game.get("release_date", None),
-                            game.get("image_url", None),
+                            game.get("thumbnail_url", None), # Corrected: Was image_url, schema uses thumbnail_url
                             game.get("game_url", "#"),
                             game.get("developer", ""),
-                            game.get("rating", None)
+                            game.get("details_image_url", None) # Corrected: Was rating, schema uses details_image_url
                         )
                     )
                     inserted_count += 1
                 except sqlite3.IntegrityError as e:
                     click.echo(f"Warning: Could not insert game '{game.get('title')}'. IntegrityError: {e}", err=True)
-                except KeyError as e:
+                except KeyError as e: # Should not happen if using .get() for all fields
                     click.echo(f"Warning: Missing key {e} for game '{game.get('title')}'. Skipping.", err=True)
+                except Exception as e: # Catch any other unexpected errors during insertion
+                    click.echo(f"Warning: An unexpected error occurred while inserting game '{game.get('title')}': {e}", err=True)
+
             db.commit()
             if inserted_count > 0:
                 click.echo(f"Inserted {inserted_count} initial games from {INITIAL_DATA_FILE}.")
@@ -120,10 +124,12 @@ def query_db(query, args=(), one=False):
 
 def get_all_games():
     """Retrieves all games from the database."""
-    games = query_db("SELECT * FROM games ORDER BY title")
+    # Query all columns as defined in schema.sql
+    games = query_db("SELECT id, title, description, genre, release_date, developer, game_url, thumbnail_url, details_image_url, created_at FROM games ORDER BY title")
     return [dict(game) for game in games] if games else []
 
 def get_game_by_id(game_id):
     """Retrieves a single game by its ID from the database."""
-    game = query_db("SELECT * FROM games WHERE id = ?", (game_id,), one=True)
+    # Query all columns as defined in schema.sql
+    game = query_db("SELECT id, title, description, genre, release_date, developer, game_url, thumbnail_url, details_image_url, created_at FROM games WHERE id = ?", (game_id,), one=True)
     return dict(game) if game else None
