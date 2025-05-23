@@ -73,16 +73,11 @@ if [ -d "frontend" ]; then
     # npm audit fix can exit non-zero if vulnerabilities cannot be fixed. We want to warn but continue.
     npm audit fix || echo "WARN: 'npm audit fix' completed with errors or found vulnerabilities that could not be fixed automatically. Check 'npm audit' for details."
 
-    # Build the React application
-    echo "INFO: Building the React application (npm run build)..."
-    npm run build
-    echo "INFO: Frontend build complete."
-
-    # Serve the frontend on port 9000
-    echo "INFO: Starting frontend server on port 9000..."
-    # npx will download serve if not present
-    # Serve from the 'build' directory inside 'frontend'
-    npx serve -s build -l 9000 &
+    # Start the React development server using npm start
+    echo "INFO: Starting frontend development server on port 9000 (npm start)..."
+    # npm start (defined in package.json) will run the React development server.
+    # It typically uses react-scripts start, which handles its own logging.
+    npm start &
     FRONTEND_PID=$!
     echo "INFO: Frontend PID: $FRONTEND_PID"
     cd "${PROJECT_ROOT}" # Return to project root
@@ -105,7 +100,9 @@ cleanup() {
     echo "INFO: Shutting down servers..."
     if [ ! -z "$FRONTEND_PID" ]; then # Shut down frontend first if it exists
         echo "INFO: Stopping frontend server (PID: $FRONTEND_PID)..."
-        kill "$FRONTEND_PID" > /dev/null 2>&1 || echo "INFO: Frontend server (PID: $FRONTEND_PID) was already stopped or could not be killed."
+        # Sending SIGTERM to the process group of npm start
+        # This is more reliable for stopping the entire tree of processes spawned by react-scripts.
+        kill -SIGTERM -- "-$FRONTEND_PID" > /dev/null 2>&1 || echo "INFO: Frontend server (PID: $FRONTEND_PID) or its process group was already stopped or could not be killed."
     fi
     if [ ! -z "$BACKEND_PID" ]; then
         echo "INFO: Stopping backend server (PID: $BACKEND_PID)..."
