@@ -1,0 +1,22 @@
+/*
+  This is a placeholder for the cyberpunk_bg.jpg image file.
+
+  This image is intended to be used as a general background for the Cyberpunk Arcade Dashboard, contributing to its flashy cyberpunk aesthetic.
+
+  To use a background image:
+  1. Find or create a suitable high-resolution cyberpunk-themed background image.
+     - You can search for images on platforms like Unsplash (unsplash.com) or Pexels (pexels.com) using terms "cyberpunk", "neon city", "futuristic cityscape", etc.
+     - Ensure the image is royalty-free or you have the necessary rights to use it.
+  2. Name the image file `cyberpunk_bg.jpg` (or update references in the CSS if you use a different name).
+  3. Place the image file in this directory: `frontend/src/assets/images/`.
+  4. Reference this image in your CSS files, for example:
+     body {
+       background-image: url('./assets/images/cyberpunk_bg.jpg'); /* Example if CSS is in src/ */
+       background-size: cover;
+       background-position: center;
+       background-repeat: no-repeat;
+       background-attachment: fixed; /* Optional, for a fixed background effect */
+     }
+
+  Replace this placeholder comment with the actual image file.
+*/

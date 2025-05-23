@@ -12,7 +12,7 @@
   justify-content: center;
   text-align: center;
   padding: 4rem 2rem;
-  background-image: url('/assets/images/cyberpunk_bg.jpg');
+  background-image: url('../../assets/images/cyberpunk_bg.jpg'); /* Updated path */
   background-size: cover;
   background-position: center center;
   background-attachment: fixed; /* Parallax-like effect */

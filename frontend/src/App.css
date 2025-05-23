@@ -4,7 +4,7 @@
   min-height: 100vh;
   background-color: var(--background-color); /* Already set on body, but good for explicitness */
   /* Optional: Add a subtle background pattern or texture if desired */
-  /* background-image: url('/assets/images/cyberpunk_bg.jpg'); */
+  /* background-image: url('./assets/images/cyberpunk_bg.jpg'); */ /* Path would need to be relative from App.css to src/assets */
   /* background-size: cover; */
   /* background-attachment: fixed; */ 
 }
