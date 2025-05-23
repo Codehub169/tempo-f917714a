@@ -2,9 +2,11 @@
 
 /**
  * The base URL for the backend API.
- * Ensure this matches the port your Flask backend is running on.
+ * Uses a relative path assuming frontend is served from the same origin as the API.
+ * This is suitable when Flask serves both the frontend and the API.
+ * Can be overridden by REACT_APP_API_BASE_URL environment variable during build.
  */
-export const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000/api';
+export const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || '/api';
 
 /**
  * Default number of items per page for pagination (if implemented).
@@ -18,6 +20,8 @@ export const SITE_TITLE = 'Cyberpunk Arcade';
 
 /**
  * Path to the default game thumbnail if a specific one is not available.
+ * This path is relative to the domain root, served by Flask.
+ * Assumes the image is in `frontend/public/assets/images/`.
  */
 export const DEFAULT_GAME_THUMBNAIL = '/assets/images/game_thumb_default.png';
 

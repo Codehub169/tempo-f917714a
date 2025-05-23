@@ -8,7 +8,7 @@ PROJECT_ROOT=$(pwd)
 
 # Initialize PIDs to empty strings for robust checking later
 BACKEND_PID=""
-FRONTEND_PID=""
+# FRONTEND_PID="" # Removed frontend PID as Flask will serve the built frontend
 
 # --- Backend Setup ---
 echo "INFO: Setting up backend..."
@@ -40,14 +40,6 @@ else
     exit 1
 fi
 
-# Start backend server in the background
-echo "INFO: Starting backend server on port 5000..."
-# Gunicorn's --chdir makes paths relative to backend/ for the app itself
-# Log to stdout/stderr for easier capture by process managers/containers
-gunicorn --workers 2 --bind 0.0.0.0:5000 "app:app" --chdir "${PROJECT_ROOT}/backend" --log-level info --access-logfile "-" --error-logfile "-" &
-BACKEND_PID=$!
-echo "INFO: Backend PID: $BACKEND_PID"
-
 # --- Frontend Setup ---
 if [ -d "frontend" ]; then
     echo "INFO: Setting up frontend..."
@@ -55,12 +47,9 @@ if [ -d "frontend" ]; then
 
     # Check for package.json
     if [ ! -f "package.json" ]; then
-        echo "ERROR: frontend/package.json not found! Cannot proceed with frontend setup."
+        echo "ERROR: frontend/package.json not found! Cannot proceed with frontend setup and build."
         cd "${PROJECT_ROOT}"
-        if [ ! -z "$BACKEND_PID" ]; then
-            echo "INFO: Shutting down backend server due to critical frontend setup failure..."
-            kill "$BACKEND_PID" || echo "WARN: Backend server (PID: $BACKEND_PID) might have already stopped or could not be killed."
-        fi
+        # No backend to kill yet, as it hasn't been started.
         exit 1
     fi
 
@@ -70,43 +59,45 @@ if [ -d "frontend" ]; then
 
     # Attempt to fix vulnerabilities
     echo "INFO: Attempting to fix security vulnerabilities (npm audit fix)..."
-    # npm audit fix can exit non-zero if vulnerabilities cannot be fixed. We want to warn but continue.
-    npm audit fix || echo "WARN: 'npm audit fix' completed with errors or found vulnerabilities that could not be fixed automatically. Check 'npm audit' for details."
+    npm audit fix --force || echo "WARN: 'npm audit fix --force' completed with errors or found vulnerabilities that could not be fixed automatically. Check 'npm audit' for details."
 
-    # Start the React development server using npm start
-    echo "INFO: Starting frontend development server on port 9000 (npm start)..."
-    # npm start (defined in package.json) will run the React development server.
-    # It typically uses react-scripts start, which handles its own logging.
-    npm start &
-    FRONTEND_PID=$!
-    echo "INFO: Frontend PID: $FRONTEND_PID"
+    # Build the React application for production
+    echo "INFO: Building frontend application (npm run build)..."
+    npm run build
+    echo "INFO: Frontend application built successfully."
+
     cd "${PROJECT_ROOT}" # Return to project root
 else
-    echo "WARNING: frontend directory not found. Skipping frontend setup."
+    echo "ERROR: frontend directory not found. Cannot build frontend. Backend will run without frontend."
+    # Depending on requirements, one might choose to exit here if frontend is mandatory.
+    # For now, we allow backend to start alone if frontend dir is missing.
 fi
+
+# Start backend server in the background
+echo "INFO: Starting backend server on port 5000 (will also serve frontend)..."
+# Gunicorn's --chdir makes paths relative to backend/ for the app itself
+# Log to stdout/stderr for easier capture by process managers/containers
+gunicorn --workers 2 --bind 0.0.0.0:5000 "app:app" --chdir "${PROJECT_ROOT}/backend" --log-level info --access-logfile "-" --error-logfile "-" &
+BACKEND_PID=$!
+echo "INFO: Backend PID: $BACKEND_PID"
 
 echo ""
 echo "Cyberpunk Arcade Dashboard is launching."
 if [ ! -z "$BACKEND_PID" ]; then
-    echo "Backend API will be available at: http://localhost:5000"
+    echo "Application (Backend API & Frontend) will be available at: http://localhost:5000"
 fi
-if [ ! -z "$FRONTEND_PID" ]; then
-    echo "Frontend will be available at: http://localhost:9000"
-fi
+# No separate frontend server message needed as Flask serves it
 
 # Function to clean up background processes on script exit
 cleanup() {
     echo ""
-    echo "INFO: Shutting down servers..."
-    if [ ! -z "$FRONTEND_PID" ]; then # Shut down frontend first if it exists
-        echo "INFO: Stopping frontend server (PID: $FRONTEND_PID)..."
-        # Sending SIGTERM to the process group of npm start
-        # This is more reliable for stopping the entire tree of processes spawned by react-scripts.
-        kill -SIGTERM -- "-$FRONTEND_PID" > /dev/null 2>&1 || echo "INFO: Frontend server (PID: $FRONTEND_PID) or its process group was already stopped or could not be killed."
-    fi
+    echo "INFO: Shutting down server..."
+    # No FRONTEND_PID to manage
     if [ ! -z "$BACKEND_PID" ]; then
         echo "INFO: Stopping backend server (PID: $BACKEND_PID)..."
-        kill "$BACKEND_PID" > /dev/null 2>&1 || echo "INFO: Backend server (PID: $BACKEND_PID) was already stopped or could not be killed."
+        # Attempt to kill the process group if it's a leader, otherwise just the process
+        # This is a more robust way to kill gunicorn and its workers
+        kill -- "-$BACKEND_PID" 2>/dev/null || kill "$BACKEND_PID" > /dev/null 2>&1 || echo "INFO: Backend server (PID: $BACKEND_PID) was already stopped or could not be killed."
     fi
     echo "INFO: Cleanup complete."
 }
@@ -115,13 +106,8 @@ cleanup() {
 trap cleanup SIGINT SIGTERM
 
 # Wait for background processes to finish
-# This keeps the script alive and allows cleanup to run when Ctrl+C is pressed.
-# If only backend is running (e.g. frontend dir missing), wait only for backend.
-if [ ! -z "$BACKEND_PID" ] && [ ! -z "$FRONTEND_PID" ]; then
-    echo "INFO: Both servers running. Waiting for PIDs: $BACKEND_PID (backend), $FRONTEND_PID (frontend). Press Ctrl+C to exit."
-    wait "$BACKEND_PID" "$FRONTEND_PID"
-elif [ ! -z "$BACKEND_PID" ]; then
-    echo "INFO: Backend server running. Waiting for PID: $BACKEND_PID (backend). Press Ctrl+C to exit."
+if [ ! -z "$BACKEND_PID" ]; then
+    echo "INFO: Backend server running. Waiting for PID: $BACKEND_PID. Press Ctrl+C to exit."
     wait "$BACKEND_PID"
 else
     echo "WARN: No primary server processes were started. Exiting."
