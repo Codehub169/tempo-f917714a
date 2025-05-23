@@ -1,0 +1,120 @@
+/* frontend/src/components/GameEmbed/GameEmbed.css */
+
+.game-embed-wrapper {
+  width: 100%;
+  max-width: 1200px; /* Max width for the game area */
+  margin: 20px auto; /* Centering the game area */
+  position: relative;
+}
+
+.game-embed-container {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio for the iframe container */
+  background-color: var(--background-color, #0A0A0A);
+  border: 2px solid var(--primary-accent-color, #00FFFF);
+  border-radius: 8px;
+  box-shadow: 0 0 15px 2px var(--primary-accent-color, #00FFFF);
+  overflow: hidden; /* Ensures iframe corners are rounded if iframe itself isn't */
+  transition: opacity 0.5s ease-in-out;
+}
+
+.game-embed-container.loading {
+  opacity: 0.5;
+}
+
+.game-embed-container.loaded {
+  opacity: 1;
+}
+
+.game-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none; /* Explicitly remove border from iframe itself */
+}
+
+.game-embed-loader-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(10, 10, 10, 0.8); /* Semi-transparent overlay */
+  z-index: 10;
+  border-radius: 8px; /* Match container */
+  font-family: var(--font-secondary, 'Rajdhani', sans-serif);
+  color: var(--text-color-light, #CCCCCC);
+}
+
+.game-embed-loader {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.loader-dot {
+  width: 15px;
+  height: 15px;
+  margin: 0 5px;
+  background-color: var(--primary-accent-color, #00FFFF);
+  border-radius: 50%;
+  animation: bounce 1.4s infinite ease-in-out both;
+  box-shadow: 0 0 5px var(--primary-accent-color, #00FFFF);
+}
+
+.loader-dot:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.loader-dot:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+@keyframes bounce {
+  0%, 80%, 100% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(1.0);
+  }
+}
+
+.loader-text {
+  font-size: 1.2rem;
+  color: var(--primary-accent-color, #00FFFF);
+  text-shadow: var(--neon-glow-primary);
+  font-family: var(--font-primary, 'Orbitron', sans-serif);
+}
+
+.game-embed-error {
+  padding: 20px; /* Remove aspect ratio padding for error message */
+  padding-top: 20px;
+  text-align: center;
+  height: auto; /* Adjust height for content */
+}
+
+.game-embed-error-message {
+  font-family: var(--font-secondary, 'Rajdhani', sans-serif);
+  color: var(--secondary-accent-color, #FF00FF);
+  font-size: 1.2rem;
+  text-shadow: var(--neon-glow-secondary);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .game-embed-wrapper {
+    margin: 10px auto;
+  }
+  .loader-text {
+    font-size: 1rem;
+  }
+  .game-embed-error-message {
+    font-size: 1rem;
+  }
+}

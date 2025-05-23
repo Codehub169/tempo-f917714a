@@ -1,0 +1,182 @@
+/* GamesListPage.css */
+.games-list-page {
+  padding: 2rem 1rem;
+  max-width: 1400px; /* Wider for more cards */
+  margin: 0 auto;
+  min-height: calc(100vh - var(--header-height, 80px) - 4rem); /* Ensure it takes significant height */
+}
+
+.games-list-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 1rem 0;
+  border-bottom: 2px solid var(--primary-accent-color-translucent, rgba(0, 255, 255, 0.3));
+}
+
+.page-title {
+  font-size: clamp(2.2rem, 5.5vw, 3.5rem);
+  color: var(--primary-accent-color);
+  text-shadow: var(--neon-glow-primary);
+  margin-bottom: 0.5rem;
+}
+
+.page-subtitle {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: var(--text-color-medium);
+  max-width: 600px;
+  margin: 0 auto 1.5rem auto;
+  line-height: 1.6;
+}
+
+/* Future Search Bar Styles (placeholder) */
+.search-bar-container {
+  position: relative;
+  max-width: 500px;
+  margin: 1rem auto 0;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.8rem 1rem 0.8rem 3rem; /* Space for icon */
+  font-family: var(--font-secondary);
+  font-size: 1rem;
+  background-color: rgba(51, 51, 51, 0.7);
+  border: 1px solid var(--ui-elements-color);
+  border-radius: 5px;
+  color: var(--text-color);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--primary-accent-color);
+  box-shadow: 0 0 10px var(--primary-accent-color-translucent, rgba(0, 255, 255, 0.3));
+}
+
+.search-icon-placeholder {
+  position: absolute;
+  left: 0.8rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--primary-accent-color);
+  font-family: 'Arial'; /* Generic fallback for icon */
+  font-size: 1.2rem;
+}
+
+/* Loading State */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 1rem;
+  min-height: 50vh;
+}
+
+.cyber-loader {
+  width: 80px;
+  height: 80px;
+  border: 5px solid transparent;
+  border-top-color: var(--primary-accent-color);
+  border-right-color: var(--primary-accent-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite, colorShiftLoader 3s linear infinite alternate;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 0 15px var(--primary-accent-color-translucent, rgba(0, 255, 255, 0.3));
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes colorShiftLoader {
+  0% { border-top-color: var(--primary-accent-color); border-right-color: var(--primary-accent-color); }
+  50% { border-top-color: var(--secondary-accent-color); border-right-color: var(--secondary-accent-color); }
+  100% { border-top-color: var(--primary-accent-color); border-right-color: var(--primary-accent-color); }
+}
+
+.loading-text {
+  font-family: var(--font-primary);
+  font-size: 1.3rem;
+  color: var(--primary-accent-color);
+  text-shadow: var(--neon-glow-primary-subtle);
+}
+
+/* Error Message */
+.error-message.full-page-error {
+  text-align: center;
+  font-size: 1.5rem;
+  color: var(--secondary-accent-color);
+  padding: 4rem 1rem;
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column; /* Allow icon and text vertically */
+  align-items: center;
+  justify-content: center;
+  text-shadow: var(--neon-glow-secondary);
+}
+
+/* Games Grid */
+.games-grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem; /* Standard gap */
+  padding: 1rem 0;
+}
+
+/* No Games Found Message */
+.no-games-found {
+  text-align: center;
+  padding: 4rem 1rem;
+  color: var(--text-color-medium);
+  font-size: 1.2rem;
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.no-games-found .no-games-icon {
+  font-size: 4rem;
+  color: var(--primary-accent-color);
+  margin-top: 1rem;
+  opacity: 0.7;
+  text-shadow: var(--neon-glow-primary-subtle);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .games-list-page {
+    padding: 1.5rem 0.5rem;
+  }
+  .games-list-header {
+    margin-bottom: 2rem;
+  }
+  .games-grid-container {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-title {
+    font-size: 1.8rem;
+  }
+  .page-subtitle {
+    font-size: 0.9rem;
+  }
+  .games-grid-container {
+    grid-template-columns: 1fr; /* Single column for very small screens */
+    gap: 1rem;
+  }
+  .cyber-loader {
+    width: 60px;
+    height: 60px;
+  }
+  .loading-text {
+    font-size: 1.1rem;
+  }
+}

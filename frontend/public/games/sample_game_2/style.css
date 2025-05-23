@@ -1,0 +1,58 @@
+/* Specific styles for Neon Cipher: Grid Break game elements if needed beyond what main.js canvas drawing handles */
+/* The game primarily uses canvas for rendering, so this file might be minimal */
+
+/* Ensure the container for the canvas is styled as expected by index.html for the game */
+#neonCipherGameContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 500px; /* Adjust as needed based on canvas size */
+    margin: 20px auto;
+    padding: 15px;
+    border: 2px solid var(--secondary-accent, #FF00FF);
+    border-radius: 10px;
+    background-color: rgba(20, 20, 30, 0.85); /* Darker, slightly transparent background */
+    box-shadow: 0 0 15px var(--secondary-accent, #FF00FF), inset 0 0 10px rgba(255, 0, 255, 0.5);
+}
+
+#neonCipherGameContainer canvas {
+    display: block; /* Removes extra space below canvas */
+    background-color: transparent; /* Canvas background is handled by drawing logic or container */
+    max-width: 100%;
+    border-radius: 5px; /* Slight rounding for the canvas itself if visible */
+}
+
+/* General page styling for the game page (if not fully covered by its index.html) */
+body.neon-cipher-body {
+    font-family: 'Rajdhani', sans-serif;
+    color: var(--text-color, #CCCCCC);
+    background-color: var(--background-color, #0A0A0A);
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+.neon-cipher-title {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--primary-accent, #00FFFF);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    text-shadow: 0 0 5px var(--primary-accent, #00FFFF), 0 0 10px var(--primary-accent, #00FFFF), 0 0 15px currentColor;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.neon-cipher-footer {
+    font-family: 'Rajdhani', sans-serif;
+    color: var(--secondary-accent, #FF00FF);
+    margin-top: 20px;
+    font-size: 0.9rem;
+    text-align: center;
+    opacity: 0.8;
+}
+
+/* Add any animations or specific element styles here if not handled by inline styles in HTML or by canvas drawing */

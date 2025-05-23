@@ -1,0 +1,265 @@
+/* Styles for the GamePage component */
+.game-page {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  color: var(--text-color);
+}
+
+.game-page-header {
+  margin-bottom: 30px;
+  text-align: center;
+  position: relative; /* For banner positioning */
+}
+
+.game-page-title {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  color: var(--primary-accent-color);
+  text-shadow: var(--neon-glow-primary);
+  margin-bottom: 10px;
+  margin-top: 10px; /* Add some space below back link */
+}
+
+.game-page-back-link {
+  display: inline-flex; /* To align icon and text */
+  align-items: center;
+  color: var(--secondary-accent-color);
+  text-decoration: none;
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  padding: 8px 15px;
+  border: 1px solid var(--secondary-accent-color);
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  margin-bottom: 20px; /* Space below back link */
+}
+
+.game-page-back-link:hover,
+.game-page-back-link:focus {
+  background-color: var(--secondary-accent-color-translucent);
+  color: var(--background-color);
+  text-shadow: 0 0 5px var(--secondary-accent-color);
+  box-shadow: 0 0 10px var(--secondary-accent-color), 0 0 15px var(--secondary-accent-color) inset;
+}
+
+.back-icon {
+  margin-right: 8px;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.game-banner-image {
+  width: 100%;
+  height: 300px; /* Or use aspect-ratio */
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 0 15px var(--primary-accent-color), 0 0 25px var(--primary-accent-color-translucent);
+  position: relative;
+  overflow: hidden; /* Ensures overlay fits within borders */
+}
+
+.game-banner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(10, 10, 10, 0.8) 0%, rgba(10, 10, 10, 0.2) 60%, transparent 100%);
+}
+
+.game-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+@media (min-width: 992px) {
+  .game-content-wrapper {
+    flex-direction: row;
+  }
+  .game-embed-section {
+    flex: 3; /* Takes more space */
+  }
+  .game-details-section {
+    flex: 2; /* Takes less space */
+  }
+}
+
+.game-embed-section {
+  /* Styles for the game embed area are mostly handled by GameEmbed.css */
+  /* This container helps with layout */
+  width: 100%;
+}
+
+.game-details-section {
+  background-color: var(--ui-elements-color-translucent);
+  padding: 25px;
+  border-radius: 8px;
+  border: 1px solid var(--primary-accent-color-translucent);
+  box-shadow: 0 0 10px var(--primary-accent-color-translucent);
+}
+
+.section-subtitle {
+  font-family: var(--font-primary);
+  color: var(--primary-accent-color);
+  font-size: clamp(1.5rem, 3vw, 1.8rem);
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--primary-accent-color-translucent);
+  text-shadow: var(--neon-glow-primary-subtle);
+}
+
+.game-description {
+  font-family: var(--font-secondary);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 20px;
+  color: var(--text-color-medium);
+}
+
+.game-meta-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+}
+
+@media (min-width: 576px) {
+  .game-meta-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+.meta-item {
+  background-color: rgba(51, 51, 51, 0.5);
+  padding: 10px 15px;
+  border-radius: 5px;
+  border-left: 3px solid var(--secondary-accent-color);
+}
+
+.meta-label {
+  display: block;
+  font-family: var(--font-primary);
+  color: var(--secondary-accent-color);
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+}
+
+.meta-value {
+  font-family: var(--font-secondary);
+  color: var(--text-color-light);
+  font-size: 1rem;
+}
+
+/* Loading and Error States */
+.game-page-loading,
+.game-page-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - var(--header-height, 100px) - 40px); /* Adjust for header and padding */
+  padding: 20px;
+  text-align: center;
+}
+
+.cyber-loader-gpage {
+  width: 60px;
+  height: 60px;
+  border: 5px solid var(--ui-elements-color);
+  border-top-color: var(--primary-accent-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite, colorShiftLoader 3s linear infinite;
+  margin-bottom: 20px;
+}
+
+.loading-text-gpage {
+  font-family: var(--font-primary);
+  font-size: 1.5rem;
+  color: var(--primary-accent-color);
+  text-shadow: var(--neon-glow-primary-subtle);
+}
+
+.error-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--secondary-accent-color);
+  text-shadow: var(--neon-glow-secondary);
+  margin-bottom: 15px;
+}
+
+.game-page-error p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--text-color-medium);
+  max-width: 600px;
+  margin-bottom: 25px;
+}
+
+.error-back-link {
+  border-color: var(--primary-accent-color);
+  color: var(--primary-accent-color);
+}
+
+.error-back-link:hover,
+.error-back-link:focus {
+  background-color: var(--primary-accent-color-translucent);
+  text-shadow: 0 0 5px var(--primary-accent-color);
+  box-shadow: 0 0 10px var(--primary-accent-color), 0 0 15px var(--primary-accent-color) inset;
+}
+
+/* Keyframes for loader (if not already global) */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes colorShiftLoader {
+  0%, 100% {
+    border-top-color: var(--primary-accent-color);
+    border-right-color: var(--secondary-accent-color-translucent);
+    border-bottom-color: var(--primary-accent-color-translucent);
+    border-left-color: var(--secondary-accent-color);
+  }
+  50% {
+    border-top-color: var(--secondary-accent-color);
+    border-right-color: var(--primary-accent-color-translucent);
+    border-bottom-color: var(--secondary-accent-color-translucent);
+    border-left-color: var(--primary-accent-color);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .game-page-title {
+    margin-top: 15px;
+  }
+  .game-banner-image {
+    height: 200px;
+  }
+  .game-details-section {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .game-page {
+    padding: 15px;
+  }
+  .game-page-back-link {
+    font-size: 0.9rem;
+    padding: 6px 10px;
+  }
+  .game-banner-image {
+    height: 150px;
+  }
+  .game-details-section {
+    padding: 15px;
+  }
+  .meta-item {
+    padding: 8px 12px;
+  }
+}

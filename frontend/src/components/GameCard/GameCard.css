@@ -1,0 +1,121 @@
+/* frontend/src/components/GameCard/GameCard.css */
+
+.game-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block; /* Ensures the link takes up the card's space */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.game-card {
+  background-color: var(--ui-elements-color, #1a1a1a); /* Darker than body for depth */
+  border: 2px solid var(--primary-accent-color, #00FFFF);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  box-shadow: 0 0 10px 0 var(--primary-accent-color, #00FFFF);
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Ensure cards in a grid have same height */
+}
+
+.game-card:hover {
+  border-color: var(--secondary-accent-color, #FF00FF);
+  box-shadow: 0 0 20px 5px var(--secondary-accent-color, #FF00FF), 
+              inset 0 0 10px 0 var(--secondary-accent-color, #FF00FF);
+}
+
+.game-card-link:hover {
+  transform: translateY(-5px) scale(1.03);
+}
+
+.game-card-image-container {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+  background-color: #050505; /* Dark placeholder bg for image */
+}
+
+.game-card-thumbnail {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Cover the area, might crop */
+  transition: opacity 0.3s ease;
+}
+
+.game-card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.game-card:hover .game-card-overlay {
+  opacity: 1;
+}
+
+.game-card-play-icon {
+  font-size: 3rem;
+  color: var(--primary-accent-color, #00FFFF);
+  text-shadow: var(--neon-glow-primary);
+}
+
+.game-card-content {
+  padding: 15px;
+  flex-grow: 1; /* Allows content to fill space if card heights vary due to grid */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Pushes genre to bottom if description is short */
+}
+
+.game-card-title {
+  font-family: var(--font-primary, 'Orbitron', sans-serif);
+  font-size: 1.4rem;
+  color: var(--primary-accent-color, #00FFFF);
+  margin: 0 0 8px 0;
+  text-shadow: var(--neon-glow-primary);
+  line-height: 1.2;
+}
+
+.game-card-genre {
+  font-family: var(--font-secondary, 'Rajdhani', sans-serif);
+  font-size: 0.9rem;
+  color: var(--text-color-light, #CCCCCC);
+  margin: 0;
+  opacity: 0.8;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .game-card-title {
+    font-size: 1.2rem;
+  }
+  .game-card-genre {
+    font-size: 0.85rem;
+  }
+  .game-card-play-icon {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .game-card-title {
+    font-size: 1.1rem;
+  }
+  .game-card-genre {
+    font-size: 0.8rem;
+  }
+  .game-card-content {
+    padding: 10px;
+  }
+}

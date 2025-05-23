@@ -1,0 +1,7 @@
+/*
+  User has opted to skip binary file generation for fonts.
+  The Orbitron font is being loaded via Google Fonts in `frontend/public/index.html`.
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Rajdhani:wght@400;500;700&display=swap" rel="stylesheet">
+  If you prefer to host the font files locally, place Orbitron-Regular.ttf (and other weights/styles if needed) in this directory 
+  and update the @font-face rules in your CSS (e.g., in App.css or index.css).
+*/

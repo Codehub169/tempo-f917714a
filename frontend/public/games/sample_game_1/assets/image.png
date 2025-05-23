@@ -1,0 +1,14 @@
+This is a placeholder for image.png for Sample Game 1 (Void Runner - Protocol C).
+
+Please replace this file with an actual PNG image. This image could be used for:
+- A player sprite if the game used sprite-based graphics.
+- An obstacle image.
+- A background element.
+- UI icons within the game.
+
+For example, if you create a 32x32 pixel art ship for the player, you would save it as 'image.png' in this 'assets' directory.
+The game's JavaScript ('main.js') would then need to be updated to load and use this image.
+
+Currently, 'main.js' for Void Runner uses procedurally drawn shapes on the canvas and does not load external images.
+If you wish to use this image, you would modify the drawing functions in 'main.js'
+(e.g., `drawPlayer()` or `drawObstacles()`) to use `ctx.drawImage()` with this asset after loading it with `new Image()` and setting its `src`.

@@ -1,0 +1,57 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--background-color); /* Already set on body, but good for explicitness */
+  /* Optional: Add a subtle background pattern or texture if desired */
+  /* background-image: url('/assets/images/cyberpunk_bg.jpg'); */
+  /* background-size: cover; */
+  /* background-attachment: fixed; */ 
+}
+
+.app-content {
+  flex-grow: 1;
+  padding: 2rem; /* Add some padding around the main content area */
+  width: 100%;
+  max-width: 1600px; /* Max width for content, centered */
+  margin: 0 auto; /* Center content */
+  position: relative; /* For potential pseudo-elements or positioned children */
+}
+
+/* Example of a subtle scanline effect for the entire app background */
+/* body::before { 
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    rgba(10, 10, 10, 0) 50%,
+    rgba(0, 255, 255, 0.05) 50%
+  );
+  background-size: 100% 4px;
+  animation: scanline 20s linear infinite;
+  pointer-events: none;
+  z-index: -1; /* Ensure it's behind content */
+/* } */
+
+/* @keyframes scanline {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 100vh;
+  }
+} */
+
+/* Styling for the LoadingFallback defined in App.js, if needed beyond inline */
+/* This is mostly handled by inline styles in App.js for simplicity */
+.loading-fallback {
+  font-family: var(--font-primary);
+  color: var(--primary-accent-color);
+  text-align: center;
+  font-size: 2rem;
+  padding-top: 20%;
+  text-shadow: var(--glow-primary);
+}

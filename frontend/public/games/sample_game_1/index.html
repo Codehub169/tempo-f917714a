@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Void Runner - Protocol C</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #0A0A0A; /* Deep Black */
+            color: #00FFFF; /* Cyan Neon */
+            font-family: 'Rajdhani', sans-serif;
+            overflow: hidden;
+        }
+        .game-container {
+            width: 80%;
+            max-width: 800px;
+            height: 60%;
+            max-height: 600px;
+            border: 2px solid #FF00FF; /* Magenta Neon */
+            box-shadow: 0 0 15px #FF00FF, 0 0 30px #FF00FF inset;
+            background-color: #1A1A1A; /* Darker shade for game area */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+        .game-canvas {
+            /* Placeholder for actual game canvas, if needed by game logic */
+            /* Example: width: 100%; height: 100%; */
+            /* For this sample, we'll just display text */
+        }
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5em;
+            text-shadow: 0 0 5px #00FFFF, 0 0 10px #00FFFF;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.2em;
+            color: #CCCCCC; /* Light Grey */
+            line-height: 1.6;
+        }
+        .glitch-text {
+            animation: glitch 1s linear infinite;
+        }
+
+        @keyframes glitch{
+          2%,64%{ transform: translate(2px,0) skew(0deg); }
+          4%,60%{ transform: translate(-2px,0) skew(0deg); }
+          62%{ transform: translate(0,0) skew(5deg); }
+        }
+        .scanlines::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                rgba(10, 10, 10, 0) 50%,
+                rgba(0, 0, 0, 0.25) 50%
+            );
+            background-size: 100% 4px;
+            animation: scanline 8s linear infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+        @keyframes scanline {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 0 100px; /* Adjust for speed */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container scanlines">
+        <div class="game-canvas">
+            <h1 class="glitch-text">VOID RUNNER</h1>
+            <p>Protocol C Initializing...</p>
+            <p>This is a placeholder for Sample Game 1. Integrate your game logic here (e.g., using JavaScript that manipulates a canvas or DOM elements).</p>
+            <p>Game files (JS, CSS, assets) for this specific game should be placed in<br><code>frontend/public/games/sample_game_1/</code></p>
+        </div>
+    </div>
+    <!-- Link to main.js for this game -->
+    <!-- <script src="main.js"></script> --> 
+</body>
+</html>

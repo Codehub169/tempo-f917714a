@@ -1,0 +1,53 @@
+/* frontend/public/games/sample_game_1/style.css */
+
+/* 
+  This CSS file is intended to be linked from sample_game_1/index.html.
+  It complements or overrides styles that might be inline in that HTML.
+*/
+
+/* Styles for the canvas element created by main.js for Void Runner */
+#voidRunnerCanvas {
+    border: 2px solid #00FFFF; /* Cyan Neon border */
+    box-shadow: 0 0 10px #00FFFF, 0 0 20px #00FFFF inset; /* Neon glow effect */
+    background-color: #0A0A0A; /* Ensure canvas background if not drawn over by starfield quickly */
+    display: block; /* Remove extra space below canvas if it's inline */
+    margin: auto; /* Center canvas if game-container uses flex/grid or has padding */
+    max-width: 100%;
+    /* aspect-ratio: 600 / 400; Maintain aspect ratio if container is responsive */
+    /* Ensure touch actions for game control don't trigger browser default actions like scrolling or zooming on canvas */
+    touch-action: none;
+}
+
+/* 
+  The .game-container div styling is primarily in sample_game_1/index.html's inline styles.
+  If specific overrides for Void Runner's container are needed, they can go here, 
+  perhaps targeting an ID like #voidRunnerGameContainer if that HTML element has it.
+  The main.js now prefers #voidRunnerGameContainer or falls back to .game-container.
+*/
+
+/* Example: Styles for the specific container of Void Runner if it has an ID */
+#voidRunnerGameContainer {
+    display: flex; /* Helps in centering the canvas if it has margin:auto */
+    justify-content: center;
+    align-items: center;
+    width: auto; /* Or specific dimensions like 600px */
+    height: auto; /* Or specific dimensions like 400px */
+    /* padding: 10px; Potentially add padding around the canvas */
+}
+
+/* Global styles for game pages if not covered by the main app's CSS when iframed */
+/* These might be redundant if the game's index.html already sets them or if it's iframed.*/
+/*
+body.game-specific-body {
+    background-color: #0A0A0A; 
+    color: #CCCCCC; 
+    font-family: 'Rajdhani', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; 
+    overflow: hidden; 
+}
+*/

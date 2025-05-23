@@ -1,0 +1,118 @@
+:root {
+  --background-color: #0A0A0A;
+  --primary-accent-color: #00FFFF; /* Cyan Neon */
+  --secondary-accent-color: #FF00FF; /* Magenta Neon */
+  --text-color: #CCCCCC; /* Light Grey */
+  --ui-elements-color: #333333; /* Dark Grey */
+  --font-primary: 'Orbitron', sans-serif;
+  --font-secondary: 'Rajdhani', sans-serif;
+  --glow-primary: 0 0 5px var(--primary-accent-color), 0 0 10px var(--primary-accent-color), 0 0 15px var(--primary-accent-color);
+  --glow-secondary: 0 0 5px var(--secondary-accent-color), 0 0 10px var(--secondary-accent-color), 0 0 15px var(--secondary-accent-color);
+}
+
+/* Reset and Global Styles */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px; /* Base font size */
+}
+
+body {
+  font-family: var(--font-secondary);
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden; /* Prevent horizontal scroll caused by some neon effects */
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Scrollbar for Webkit browsers */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--ui-elements-color);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-accent-color);
+  border-radius: 5px;
+  box-shadow: var(--glow-primary);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00dddd; /* Slightly lighter cyan */
+}
+
+/* General link styling */
+a {
+  color: var(--primary-accent-color);
+  text-decoration: none;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+a:hover,
+a:focus {
+  color: var(--secondary-accent-color);
+  text-shadow: var(--glow-secondary);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-primary);
+  color: var(--primary-accent-color);
+  margin-bottom: 0.75rem;
+  text-shadow: var(--glow-primary);
+}
+
+/* Utility class for subtle text flicker animation */
+.flicker-text {
+  animation: flicker 3s infinite alternate;
+}
+
+@keyframes flicker {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+    text-shadow:
+      0 0 4px var(--primary-accent-color),
+      0 0 10px var(--primary-accent-color),
+      0 0 18px var(--primary-accent-color),
+      0 0 38px var(--primary-accent-color),
+      0 0 70px var(--primary-accent-color);
+    opacity: 1;
+  }
+  20%, 24%, 55% {
+    text-shadow: none;
+    opacity: 0.8;
+  }
+}
+
+/* Ensure fonts from public/index.html are utilized */
+/* These @font-face rules are commented out as fonts are loaded via <link> in index.html */
+/* If local font files were in public/assets/fonts and preferred, uncomment and adjust paths */
+/*
+@font-face {
+  font-family: 'Orbitron';
+  src: url('/assets/fonts/Orbitron-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Rajdhani';
+  src: url('/assets/fonts/Rajdhani-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+*/

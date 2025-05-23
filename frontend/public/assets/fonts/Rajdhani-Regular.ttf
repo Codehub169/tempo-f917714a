@@ -1,0 +1,23 @@
+/*
+  This is a placeholder for the Rajdhani-Regular.ttf font file.
+
+  The Cyberpunk Arcade Dashboard uses the 'Rajdhani' font for body text.
+  Currently, this font is loaded from Google Fonts in `frontend/public/index.html`:
+  `<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Rajdhani:wght@400;500;700&display=swap" rel="stylesheet">`
+
+  If you wish to host the font locally:
+  1. Download the Rajdhani font family (including Rajdhani-Regular.ttf) from a reputable source like Google Fonts (https://fonts.google.com/specimen/Rajdhani).
+  2. Place the .ttf files in this directory (`frontend/public/assets/fonts/`).
+  3. You would then need to update your CSS (e.g., in `frontend/src/index.css` or a global stylesheet) to use `@font-face` rules pointing to these local files and remove or comment out the Google Fonts link in `frontend/public/index.html` if you want to exclusively use local fonts.
+
+  For example, a @font-face rule in your CSS might look like:
+  @font-face {
+    font-family: 'Rajdhani';
+    src: url('/assets/fonts/Rajdhani-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  This file can be safely replaced with the actual font file if local hosting is preferred.
+  The application will function correctly using Google Fonts as long as an internet connection is available and Google Fonts is accessible.
+*/

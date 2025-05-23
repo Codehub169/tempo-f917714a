@@ -1,0 +1,112 @@
+[
+  {
+    "id": 1,
+    "title": "Vector Dash",
+    "description": "An intense, fast-paced endless runner set in a kaleidoscopic cyberpunk world. Dodge obstacles and chase high scores.",
+    "genre": "Endless Runner",
+    "release_date": "2023",
+    "developer": "NeonByte Studios",
+    "game_url": "/games/sample_game_1/index.html",
+    "thumbnail_url": "/assets/images/game_thumb_default.png",
+    "details_image_url": "https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXJjYWRlJTIwZ2FtZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": 2,
+    "title": "Hex Glitch",
+    "description": "A mind-bending puzzle game where you manipulate glitched hexadecimal code to unlock secrets within a corrupted system.",
+    "genre": "Puzzle",
+    "release_date": "2024",
+    "developer": "CipherCore",
+    "game_url": "/games/sample_game_2/index.html",
+    "thumbnail_url": "/assets/images/game_thumb_default.png",
+    "details_image_url": "https://images.unsplash.com/photo-1580233159795-1cec3438659e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGN5YmVycHVua3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": 3,
+    "title": "Neon Runner X",
+    "description": "Navigate a hyper-stylized neon cityscape, parkouring over obstacles and outrunning rogue AIs. Pure adrenaline fuel.",
+    "genre": "Action Platformer",
+    "release_date": "2023",
+    "developer": "SynthWave Games",
+    "game_url": "/games/neon_runner_x/index.html",
+    "thumbnail_url": "/assets/images/game_thumb_default.png",
+    "details_image_url": "https://images.unsplash.com/photo-1555864400-cc47dd93d418?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGN5YmVycHVua3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": 4,
+    "title": "Code Breaker Omega",
+    "description": "Challenge your logic in this ultimate code-breaking simulation. Decrypt messages, bypass firewalls, and become a master cryptographer.",
+    "genre": "Puzzle",
+    "release_date": "2022",
+    "developer": "Logic Leap",
+    "game_url": "/games/code_breaker_omega/index.html",
+    "thumbnail_url": "/assets/images/game_thumb_default.png",
+    "details_image_url": "https://images.unsplash.com/photo-1509343256512-d77a5cb3791b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZnV0dXJpc3RpY3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": 5,
+    "title": "Synth Invaders",
+    "description": "A retro arcade shooter reimagined with a synthwave soundtrack and dazzling neon visuals. Defend the city from waves of invaders.",
+    "genre": "Arcade Shooter",
+    "release_date": "2023",
+    "developer": "RetroFuture Inc.",
+    "game_url": "/games/synth_invaders/index.html",
+    "thumbnail_url": "/assets/images/game_thumb_default.png",
+    "details_image_url": "https://images.unsplash.com/photo-1611909439104-3490996ef353?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8cmV0cm9mdXR1cmlzbXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": 6,
+    "title": "Data Heist: NeoKyoto",
+    "description": "Infiltrate mega-corporation servers in the neon-drenched streets of NeoKyoto. A tactical stealth game with high stakes.",
+    "genre": "Stealth Strategy",
+    "release_date": "2024",
+    "developer": "Shadow Systems",
+    "game_url": "/games/data_heist_neokyoto/index.html",
+    "thumbnail_url": "/assets/images/game_thumb_default.png",
+    "details_image_url": "https://images.unsplash.com/photo-1520085601670-ee14aa5fa3e8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGhhY2tlcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": 7,
+    "title": "Grid Racer Hyper",
+    "description": "Experience blistering speeds in this futuristic racer. Compete on light-infused tracks and dominate the global leaderboard.",
+    "genre": "Racing",
+    "release_date": "2023",
+    "developer": "Momentum Dynamics",
+    "game_url": "/games/grid_racer_hyper/index.html",
+    "thumbnail_url": "/assets/images/game_thumb_default.png",
+    "details_image_url": "https://images.unsplash.com/photo-1579381458693-787319791fce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fG5lb24lMjByYWNpbmd8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": 8,
+    "title": "Quantum Link Saga",
+    "description": "A challenging puzzle game where you forge connections in a quantum network. Unravel complex patterns and unlock the secrets of the void.",
+    "genre": "Puzzle",
+    "release_date": "2022",
+    "developer": "Entangled Minds",
+    "game_url": "/games/quantum_link_saga/index.html",
+    "thumbnail_url": "/assets/images/game_thumb_default.png",
+    "details_image_url": "https://images.unsplash.com/photo-1639275199715-eea510086673?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHF1YW50dW0lMjBjb21wdXRpbmd8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": 9,
+    "title": "Void Scrapper",
+    "description": "Pilot your heavily armed ship through asteroid fields and enemy fleets in this classic top-down space shooter with a cyberpunk twist.",
+    "genre": "Space Shooter",
+    "release_date": "2023",
+    "developer": "Starlight Drifters",
+    "game_url": "/games/void_scrapper/index.html",
+    "thumbnail_url": "/assets/images/game_thumb_default.png",
+    "details_image_url": "https://images.unsplash.com/photo-1531398790496-90908f62d530?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHNwYWNlJTIwc2hvb3RlcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": 10,
+    "title": "Chrono Shift Maze",
+    "description": "Navigate intricate mazes where time itself is a tool. Bend timelines to solve puzzles and escape the labyrinth.",
+    "genre": "Puzzle Platformer",
+    "release_date": "2024",
+    "developer": "Temporal Weavers",
+    "game_url": "/games/chrono_shift_maze/index.html",
+    "thumbnail_url": "/assets/images/game_thumb_default.png",
+    "details_image_url": "https://images.unsplash.com/photo-1560169803-9c1c0a405a4c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8bWF6ZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=1200&q=80"
+  }
+]

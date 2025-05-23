@@ -1,0 +1,16 @@
+/*
+  This is a placeholder for the game_thumb_default.png image file.
+
+  This image is intended to be used as a default thumbnail for games in the Cyberpunk Arcade Dashboard when a specific thumbnail is not available.
+  It is referenced in `backend/initial_games.json` for some game entries.
+
+  To use a default game thumbnail:
+  1. Create or find a suitable generic game thumbnail image that fits the cyberpunk aesthetic.
+     - Dimensions like 200x150 pixels or 300x200 pixels are common for thumbnails, but choose what best fits your design.
+     - It could be a simple logo, an abstract design, or a silhouette that represents a generic game.
+  2. Name the image file `game_thumb_default.png`.
+  3. Ensure it's a PNG file (or update references if you use another format like JPG).
+  4. Place the image file in this directory: `frontend/public/assets/images/`.
+
+  Replace this placeholder comment with the actual image file.
+*/
